@@ -1,0 +1,19 @@
+{
+    "app_title": "Relationable - 人物相関図",
+    "property": "プロパティ",
+    "name": "名前",
+    "image": "画像",
+    "select_image": "画像を選択",
+    "delete": "削除",
+    "save": "保存",
+    "fit_to_screen": "画面に収める",
+    "clear_all": "全て削除",
+    "export": "書き出し",
+    "import": "読み込み",
+    "add": "追加",
+    "person_property": "人物プロパティ",
+    "relation_property": "関係プロパティ",
+    "confirm_clear_all": "全てのデータを削除してもよろしいですか？",
+    "import_success": "データの読み込みに成功しました",
+    "import_failed": "データの読み込みに失敗しました"
+}

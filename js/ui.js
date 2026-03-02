@@ -1,8 +1,9 @@
 import { resizeImage, saveNodeImage, getNodeImage, getAllNodeImages, clearAllData } from './db.js';
 
 export class UIManager {
-    constructor(graphManager) {
+    constructor(graphManager, i18n) {
         this.graph = graphManager;
+        this.i18n = i18n;
         this.drawer = document.getElementById('property-drawer');
         this.form = document.getElementById('property-form');
         this.nameInput = document.getElementById('elem-name');
@@ -90,7 +91,11 @@ export class UIManager {
         if (this.nameInput) this.nameInput.value = data.name || '';
 
         const titleElem = document.getElementById('panel-title');
-        if (titleElem) titleElem.innerText = type === 'node' ? '人物プロパティ' : '関係プロパティ';
+        if (titleElem) {
+            const key = type === 'node' ? 'person_property' : 'relation_property';
+            titleElem.innerText = this.i18n.t(key);
+            titleElem.setAttribute('data-i18n', key);
+        }
 
         const nodeOnly = document.getElementById('node-only-fields');
         if (type === 'node') {
@@ -148,7 +153,7 @@ export class UIManager {
     }
 
     async handleClearAll() {
-        if (!confirm('全てのネットワーク情報を削除しますか？')) return;
+        if (!confirm(this.i18n.t('confirm_clear_all'))) return;
         await clearAllData();
         this.graph.setData({ nodes: [], links: [] });
         this.graph.onDataChange();
@@ -213,8 +218,9 @@ export class UIManager {
 
                 this.graph.setData(data.graph);
                 this.graph.onDataChange();
+                alert(this.i18n.t('import_success'));
             } catch (err) {
-                alert('エラーが発生しました。');
+                alert(this.i18n.t('import_failed'));
             }
             if (this.importInput) this.importInput.value = '';
         };

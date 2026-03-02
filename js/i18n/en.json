@@ -1,0 +1,19 @@
+{
+    "app_title": "Relationable - Relationship Map",
+    "property": "Property",
+    "name": "Name",
+    "image": "Image",
+    "select_image": "Select Image",
+    "delete": "Delete",
+    "save": "Save",
+    "fit_to_screen": "Fit to Screen",
+    "clear_all": "Clear All",
+    "export": "Export",
+    "import": "Import",
+    "add": "Add",
+    "person_property": "Person Property",
+    "relation_property": "Relationship Property",
+    "confirm_clear_all": "Are you sure you want to clear all data?",
+    "import_success": "Data imported successfully",
+    "import_failed": "Failed to import data"
+}

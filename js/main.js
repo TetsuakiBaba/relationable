@@ -1,10 +1,14 @@
 import { loadGraphData, saveGraphData } from './db.js';
 import { GraphManager } from './graph.js';
 import { UIManager } from './ui.js';
+import { I18nManager } from './i18n.js';
 
 async function init() {
+    const i18n = new I18nManager();
+    await i18n.init();
+
     const graph = new GraphManager('#graph-svg');
-    const ui = new UIManager(graph);
+    const ui = new UIManager(graph, i18n);
 
     // Load initial data
     const data = await loadGraphData();
