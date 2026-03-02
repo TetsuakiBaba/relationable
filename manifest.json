@@ -1,0 +1,16 @@
+{
+  "name": "Relationable",
+  "short_name": "Relationable",
+  "description": "人物相関図を作成・編集できるツール",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f5f5",
+  "theme_color": "#283593",
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

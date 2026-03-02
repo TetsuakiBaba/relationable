@@ -1,0 +1,24 @@
+{
+  "name": "relationable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@material/mwc-button": "^0.27.0",
+    "@material/mwc-drawer": "^0.27.0",
+    "@material/mwc-fab": "^0.27.0",
+    "@material/mwc-icon-button": "^0.27.0",
+    "@material/mwc-textfield": "^0.27.0",
+    "@material/mwc-top-app-bar": "^0.27.0",
+    "esbuild": "^0.27.3"
+  }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relationable - 人物相関図</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="lib/fonts/roboto.css" rel="stylesheet">
+    <link href="lib/fonts/material-icons.css" rel="stylesheet">
+
+    <!-- Material Web Components via single local bundle -->
+    <script type="module" src="lib/mwc/mwc-all.js"></script>
+    <script src="lib/d3/d3.min.js"></script>
+
+</head>
+
+<body>
+    <mwc-drawer hasHeader type="dismissible" id="property-drawer">
+        <span slot="title" id="panel-title">プロパティ</span>
+        <div class="drawer-content" style="padding: 16px 24px;">
+            <form id="property-form">
+                <input type="hidden" id="elem-id">
+                <input type="hidden" id="elem-type">
+
+                <div style="margin-top: 8px; margin-bottom: 24px;">
+                    <mwc-textfield id="elem-name" label="名前" outlined style="width: 100%;"></mwc-textfield>
+                </div>
+
+                <div id="node-only-fields">
+                    <div class="image-section" style="margin-bottom: 24px;">
+                        <label class="section-label"
+                            style="display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.875rem; color: rgba(0,0,0,0.6);">画像</label>
+                        <div id="image-preview" class="image-preview"
+                            style="width: 100%; height: 180px; border: 1px dashed rgba(0,0,0,0.2); border-radius: 8px; margin-bottom: 12px; background-size: cover; background-position: center; background-color: #f9f9f9;">
+                        </div>
+                        <mwc-button label="画像を選択" icon="file_upload" id="upload-trigger-btn" outlined
+                            style="width: 100%;"></mwc-button>
+                        <input type="file" id="image-input" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="drawer-actions"
+                    style="display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.1);">
+                    <mwc-button id="delete-btn" label="削除" icon="delete" outlined class="delete-button"
+                        style="--mdc-theme-primary: #d32f2f;"></mwc-button>
+                    <mwc-button id="save-btn" label="保存" icon="save" raised></mwc-button>
+                </div>
+            </form>
+        </div>
+
+        <div slot="appContent" style="height: 100%; display: flex; flex-direction: column;">
+            <header id="app-bar">
+                <div class="bar-start" style="display: flex; align-items: center;">
+                    <mwc-icon-button icon="menu" id="menu-btn"></mwc-icon-button>
+                    <img src="logo.svg" alt="Relationable Logo" style="height: 32px; width: 32px; margin-left: 8px; margin-right: 12px; display: block;">
+                    <span class="bar-title">Relationable</span>
+                </div>
+                <div class="bar-end">
+                    <mwc-icon-button icon="zoom_out_map" id="fit-btn" title="画面に収める"></mwc-icon-button>
+                    <mwc-button label="Clear All" id="clear-all-btn"
+                        style="--mdc-theme-primary: #ffcdd2; color: #b00020;"></mwc-button>
+                    <mwc-button label="Export" id="export-btn" style="--mdc-theme-primary: #ffffff;"></mwc-button>
+                    <mwc-button label="Import" id="import-btn" style="--mdc-theme-primary: #ffffff;"></mwc-button>
+                    <input type="file" id="import-input" accept=".json" style="display: none;">
+                </div>
+            </header>
+            <main class="main-content"
+                style="flex: 1; overflow: hidden; position: relative; background-color: #f5f5f5;">
+                <div id="graph-container"
+                    style="height: 100%; width: 100%; position: relative; background-image: radial-gradient(rgba(0,0,0,0.1) 1px, transparent 1px); background-size: 20px 20px;">
+                    <svg id="graph-svg" style="width: 100%; height: 100%;"></svg>
+                    <mwc-fab id="add-node-btn" icon="add" label="追加" class="add-fab"
+                        style="position: absolute; bottom: 24px; right: 24px;"></mwc-fab>
+                </div>
+            </main>
+        </div>
+    </mwc-drawer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

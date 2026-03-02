@@ -1,0 +1,252 @@
+:root {
+    /* Material Design 3 Monochromatic Theme */
+    --md-sys-color-surface: #ffffff;
+    --md-sys-color-on-surface: #1a1c1e;
+    --md-sys-color-surface-variant: #f0f0f0;
+    --md-sys-color-primary: #000000;
+    --md-sys-color-on-primary: #ffffff;
+    --md-sys-color-outline: #74777f;
+    --md-sys-color-outline-variant: #c4c6d0;
+    --md-sys-color-error: #ba1a1a;
+    --md-sys-color-on-error: #ffffff;
+
+    --md-sys-typescale-title-large: 22px;
+    --md-sys-typescale-body-medium: 14px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* App Bar */
+#app-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 8px 0 4px;
+    background-color: #6200ee;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.bar-start {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.bar-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.bar-end {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.md-top-app-bar {
+    background-color: var(--md-sys-color-surface);
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    padding: 0 16px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+#graph-container {
+    flex: 1;
+    position: relative;
+    background-image: radial-gradient(var(--md-sys-color-outline-variant) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+#graph-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* FAB */
+.md-fab {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.md-fab:hover {
+    transform: scale(1.05);
+}
+
+#property-drawer {
+    --mdc-drawer-width: 320px;
+}
+
+#property-drawer [slot="title"] {
+    padding-top: 16px;
+}
+
+.md-drawer__header {
+    padding: 16px;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.md-drawer__content {
+    padding: 16px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Form Elements */
+.md-text-field {
+    margin-bottom: 20px;
+}
+
+.md-text-field label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.md-text-field__input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--md-sys-color-outline);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+.md-image-upload {
+    margin-bottom: 20px;
+}
+
+.image-preview {
+    width: 100px;
+    height: 100px;
+    border: 1px dashed var(--md-sys-color-outline);
+    margin: 8px 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.md-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.md-button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.md-button--primary {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+
+.md-button--error {
+    background-color: transparent;
+    color: var(--md-sys-color-error);
+    border: 1px solid var(--md-sys-color-error);
+}
+
+.md-button--outline {
+    background-color: transparent;
+    color: var(--md-sys-color-on-surface);
+    border: 1px solid var(--md-sys-color-outline);
+    margin-left: 8px;
+}
+
+.md-button--outline:hover {
+    background-color: var(--md-sys-color-surface-variant);
+}
+
+.md-button--error-text {
+    color: var(--md-sys-color-error);
+    border-color: var(--md-sys-color-error);
+}
+
+/* D3 Styles */
+.node circle {
+    stroke: var(--md-sys-color-primary);
+    stroke-width: 2px;
+    fill: var(--md-sys-color-surface);
+}
+
+.node text {
+    font-size: 12px;
+    pointer-events: none;
+    text-anchor: middle;
+}
+
+.link {
+    stroke: var(--md-sys-color-outline);
+    stroke-opacity: 0.6;
+    stroke-width: 2px;
+    cursor: pointer;
+}
+
+.link:hover {
+    stroke-opacity: 1;
+    stroke-width: 4px;
+}
+
+.link-label {
+    font-size: 10px;
+    fill: var(--md-sys-color-outline);
+}
+
+.handle {
+    fill: transparent;
+    cursor: crosshair;
+}
+
+.handle:hover {
+    fill: rgba(0, 0, 0, 0.1);
+}
+
+.temp-line {
+    stroke: var(--md-sys-color-outline);
+    stroke-dasharray: 4;
+    pointer-events: none;
+}
