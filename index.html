@@ -43,7 +43,18 @@
                     </div>
                 </div>
 
-                <div class="drawer-actions"
+                <div id="graph-settings-fields" style="display: none;">
+                    <div style="margin-top: 16px; margin-bottom: 24px;">
+                        <label data-i18n="repulsion" style="display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.875rem; color: rgba(0,0,0,0.6);">反発力</label>
+                        <input type="range" id="repulsion-slider" value="300" min="0" max="1000" step="50" style="width: 100%;">
+                    </div>
+                    <div style="margin-top: 8px; margin-bottom: 24px;">
+                        <label data-i18n="link_distance" style="display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.875rem; color: rgba(0,0,0,0.6);">リンクの長さ</label>
+                        <input type="range" id="link-distance-slider" value="150" min="50" max="500" step="10" style="width: 100%;">
+                    </div>
+                </div>
+
+                <div id="property-actions" class="drawer-actions"
                     style="display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.1);">
                     <mwc-button id="delete-btn" label="削除" icon="delete" data-i18n="delete" outlined
                         class="delete-button" style="--mdc-theme-primary: #d32f2f;"></mwc-button>
@@ -61,6 +72,8 @@
                     <span class="bar-title">Relationable</span>
                 </div>
                 <div class="bar-end">
+                    <mwc-icon-button icon="settings" id="settings-btn" title="グラフ設定"
+                        data-i18n="graph_settings"></mwc-icon-button>
                     <mwc-icon-button icon="zoom_out_map" id="fit-btn" title="画面に収める"
                         data-i18n="fit_to_screen"></mwc-icon-button>
                     <mwc-button label="Clear All" id="clear-all-btn" data-i18n="clear_all"

@@ -18,8 +18,12 @@ export class UIManager {
         this.importInput = document.getElementById('import-input');
         this.clearAllBtn = document.getElementById('clear-all-btn');
         this.fitBtn = document.getElementById('fit-btn');
+        this.settingsBtn = document.getElementById('settings-btn');
         this.menuBtn = document.getElementById('menu-btn');
         this.uploadTrigger = document.getElementById('upload-trigger-btn');
+
+        this.repulsionSlider = document.getElementById('repulsion-slider');
+        this.linkDistanceSlider = document.getElementById('link-distance-slider');
 
         this.initEvents();
     }
@@ -33,6 +37,7 @@ export class UIManager {
 
         if (this.clearAllBtn) this.clearAllBtn.onclick = () => this.handleClearAll();
         if (this.fitBtn) this.fitBtn.onclick = () => this.graph.fitToScreen();
+        if (this.settingsBtn) this.settingsBtn.onclick = () => this.openSettingsPanel();
         if (this.exportBtn) this.exportBtn.onclick = () => this.handleExport();
         if (this.importBtn) this.importBtn.onclick = () => this.importInput.click();
         if (this.importInput) this.importInput.onchange = (e) => this.handleImport(e);
@@ -73,6 +78,18 @@ export class UIManager {
             };
         }
 
+        if (this.repulsionSlider) {
+            this.repulsionSlider.oninput = (e) => {
+                this.graph.setSimulationParameters(e.target.value, undefined);
+            };
+        }
+
+        if (this.linkDistanceSlider) {
+            this.linkDistanceSlider.oninput = (e) => {
+                this.graph.setSimulationParameters(undefined, e.target.value);
+            };
+        }
+
         this.graph.onElementClick = (event, d, type) => {
             event.stopPropagation();
             this.openPanel(d, type);
@@ -98,6 +115,14 @@ export class UIManager {
         }
 
         const nodeOnly = document.getElementById('node-only-fields');
+        const graphSettings = document.getElementById('graph-settings-fields');
+        const propertyActions = document.getElementById('property-actions');
+        const nameField = document.getElementById('elem-name');
+
+        if (graphSettings) graphSettings.style.display = 'none';
+        if (propertyActions) propertyActions.style.display = 'flex';
+        if (nameField) nameField.parentElement.style.display = 'block';
+
         if (type === 'node') {
             if (nodeOnly) nodeOnly.style.display = 'block';
             const blob = await getNodeImage(data.id);
@@ -116,6 +141,32 @@ export class UIManager {
             }
         }
         if (this.imageInput) this.imageInput.value = '';
+    }
+
+    openSettingsPanel() {
+        if (this.drawer) this.drawer.open = true;
+
+        const titleElem = document.getElementById('panel-title');
+        if (titleElem) {
+            titleElem.innerText = this.i18n.t('graph_settings');
+            titleElem.setAttribute('data-i18n', 'graph_settings');
+        }
+
+        const nodeOnly = document.getElementById('node-only-fields');
+        if (nodeOnly) nodeOnly.style.display = 'none';
+
+        const nameField = document.getElementById('elem-name');
+        if (nameField) nameField.parentElement.style.display = 'none';
+
+        const graphSettings = document.getElementById('graph-settings-fields');
+        if (graphSettings) graphSettings.style.display = 'block';
+
+        const propertyActions = document.getElementById('property-actions');
+        if (propertyActions) propertyActions.style.display = 'none';
+
+        // Update slider values to match current simulation state
+        if (this.repulsionSlider) this.repulsionSlider.value = this.graph.repulsion;
+        if (this.linkDistanceSlider) this.linkDistanceSlider.value = this.graph.linkDistance;
     }
 
     updateImagePreview(blob) {

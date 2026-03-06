@@ -98,6 +98,36 @@ body {
     color: var(--md-sys-color-on-primary);
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Range Input Styling */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #e0e0e0;
+    height: 4px;
+    border-radius: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -6px;
+    background-color: #6200ee;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+}
+
+input[type="range"]:focus {
+    outline: none;
+}
     cursor: pointer;
     font-size: 24px;
     display: flex;

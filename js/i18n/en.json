@@ -15,5 +15,8 @@
     "relation_property": "Relationship Property",
     "confirm_clear_all": "Are you sure you want to clear all data?",
     "import_success": "Data imported successfully",
-    "import_failed": "Failed to import data"
+    "import_failed": "Failed to import data",
+    "graph_settings": "Graph Settings",
+    "repulsion": "Repulsion",
+    "link_distance": "Link Distance"
 }

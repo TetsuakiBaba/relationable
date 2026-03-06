@@ -15,11 +15,25 @@ export class GraphManager {
     }
 
     initSimulation() {
+        this.repulsion = 300;
+        this.linkDistance = 150;
         this.simulation = d3.forceSimulation()
-            .force("link", d3.forceLink().id(d => d.id).distance(150))
-            .force("charge", d3.forceManyBody().strength(-300))
+            .force("link", d3.forceLink().id(d => d.id).distance(this.linkDistance))
+            .force("charge", d3.forceManyBody().strength(-this.repulsion))
             .force("center", d3.forceCenter(this.width / 2, this.height / 2))
             .on("tick", () => this.ticked());
+    }
+
+    setSimulationParameters(repulsion, linkDistance) {
+        if (repulsion !== undefined) {
+            this.repulsion = repulsion;
+            this.simulation.force("charge").strength(-this.repulsion);
+        }
+        if (linkDistance !== undefined) {
+            this.linkDistance = linkDistance;
+            this.simulation.force("link").distance(this.linkDistance);
+        }
+        this.simulation.alpha(0.3).restart();
     }
 
     initGroups() {

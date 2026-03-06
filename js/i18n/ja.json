@@ -15,5 +15,8 @@
     "relation_property": "関係プロパティ",
     "confirm_clear_all": "全てのデータを削除してもよろしいですか？",
     "import_success": "データの読み込みに成功しました",
-    "import_failed": "データの読み込みに失敗しました"
+    "import_failed": "データの読み込みに失敗しました",
+    "graph_settings": "グラフ設定",
+    "repulsion": "反発力",
+    "link_distance": "リンクの長さ"
 }
