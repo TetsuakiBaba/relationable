@@ -165,8 +165,7 @@ export class UIManager {
         if (propertyActions) propertyActions.style.display = 'none';
 
         // Update slider values to match current simulation state
-        if (this.repulsionSlider) this.repulsionSlider.value = this.graph.repulsion;
-        if (this.linkDistanceSlider) this.linkDistanceSlider.value = this.graph.linkDistance;
+        this.updateSettingsUI();
     }
 
     updateImagePreview(blob) {
@@ -175,6 +174,15 @@ export class UIManager {
             this.imagePreview.style.backgroundImage = `url(${url})`;
         } else if (this.imagePreview) {
             this.imagePreview.style.backgroundImage = 'none';
+        }
+    }
+
+    updateSettingsUI() {
+        if (this.repulsionSlider) {
+            this.repulsionSlider.value = this.graph.repulsion;
+        }
+        if (this.linkDistanceSlider) {
+            this.linkDistanceSlider.value = this.graph.linkDistance;
         }
     }
 
@@ -275,6 +283,7 @@ export class UIManager {
                 }
 
                 this.graph.setData(data.graph);
+                this.updateSettingsUI();
                 this.graph.onDataChange();
                 alert(this.i18n.t('import_success'));
             } catch (err) {
