@@ -22,7 +22,11 @@ async function init() {
                 source: l.source.id || l.source,
                 target: l.target.id || l.target,
                 name: l.name
-            }))
+            })),
+            settings: {
+                repulsion: graph.repulsion,
+                linkDistance: graph.linkDistance
+            }
         };
         saveGraphData(currentData);
     };

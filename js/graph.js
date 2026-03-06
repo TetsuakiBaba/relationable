@@ -34,6 +34,10 @@ export class GraphManager {
             this.simulation.force("link").distance(this.linkDistance);
         }
         this.simulation.alpha(0.3).restart();
+
+        if (this.onDataChange) {
+            this.onDataChange();
+        }
     }
 
     initGroups() {
@@ -73,6 +77,12 @@ export class GraphManager {
     setData(data) {
         this.nodes = data.nodes || [];
         this.links = data.links || [];
+        if (data.settings) {
+            this.repulsion = data.settings.repulsion ?? 300;
+            this.linkDistance = data.settings.linkDistance ?? 150;
+            this.simulation.force("charge").strength(-this.repulsion);
+            this.simulation.force("link").distance(this.linkDistance);
+        }
         this.update();
     }
 
