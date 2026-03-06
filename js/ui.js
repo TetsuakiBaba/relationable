@@ -233,7 +233,14 @@ export class UIManager {
         const exportData = {
             version: '1.0',
             timestamp: Date.now(),
-            graph: { nodes, links },
+            graph: { 
+                nodes, 
+                links,
+                settings: {
+                    repulsion: this.graph.repulsion,
+                    linkDistance: this.graph.linkDistance
+                }
+            },
             images: imageData
         };
 
